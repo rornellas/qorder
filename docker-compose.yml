@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+  order-mongo:
+    container_name: order-mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: MfQq>E!5b&nBQ5:^
+    ports:
+      - "27017:27017"
+    volumes:
+      - /mongo_data:/data/db
+
+  order-app:
+    container_name: order-app
+    image: order-app
+    build:
+      context: /
+      dockerfile: ./docker/Dockerfile
+    environment:
+      - SERVER_PORT=8080
+    ports:
+      - "8080:8080"
+
+  order-nginx:
+    container_name: order-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - order-app
