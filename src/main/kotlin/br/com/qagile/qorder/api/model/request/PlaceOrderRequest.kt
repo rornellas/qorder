@@ -9,7 +9,7 @@ data class PlaceOrderRequest(
     @JsonProperty("safety_hash")
     var safetyHash: String? = null,
     @JsonProperty("menu_items")
-    var menuItems: List<MenuItemRequest>? = null
+    var menuItems: Collection<MenuItemRequest>? = null
 ) {
     fun convertToOrder(): Order {
         return Order(userToken, safetyHash, menuItems)
