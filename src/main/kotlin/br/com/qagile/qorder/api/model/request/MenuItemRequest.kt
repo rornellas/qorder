@@ -1,4 +1,4 @@
-package br.com.qagile.qorder.core.health.api.model.request
+package br.com.qagile.qorder.api.model.request
 
 class MenuItemRequest(
     var id: String? = null,

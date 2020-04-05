@@ -1,4 +1,4 @@
-package br.com.qagile.qorder.core.health.core.health
+package br.com.qagile.qorder.core.health.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController

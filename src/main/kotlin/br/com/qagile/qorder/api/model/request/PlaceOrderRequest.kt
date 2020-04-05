@@ -1,6 +1,7 @@
-package br.com.qagile.qorder.core.health.api.model.request
+package br.com.qagile.qorder.api.model.request
 
-import br.com.qagile.qorder.core.health.api.document.Order
+import br.com.qagile.qorder.api.document.Order
+import br.com.qagile.qorder.api.model.request.MenuItemRequest
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class PlaceOrderRequest(

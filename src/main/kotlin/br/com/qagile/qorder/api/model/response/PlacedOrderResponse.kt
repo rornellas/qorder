@@ -1,6 +1,6 @@
-package br.com.qagile.qorder.core.health.api.model.response
+package br.com.qagile.qorder.api.model.response
 
-import br.com.qagile.qorder.core.health.api.document.Order
+import br.com.qagile.qorder.api.document.Order
 
 data class PlacedOrderResponse(
     var userToken: String? = null,

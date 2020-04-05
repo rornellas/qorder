@@ -1,10 +1,10 @@
-package br.com.qagile.qorder.core.health.api.service.impl
+package br.com.qagile.qorder.api.service.impl
 
-import br.com.qagile.qorder.core.health.api.model.request.PlaceOrderRequest
-import br.com.qagile.qorder.core.health.api.model.response.PlacedOrderResponse
-import br.com.qagile.qorder.core.health.api.document.Order
-import br.com.qagile.qorder.core.health.api.repository.IOrderRepository
-import br.com.qagile.qorder.core.health.api.service.IOrderService
+import br.com.qagile.qorder.api.document.Order
+import br.com.qagile.qorder.api.model.request.PlaceOrderRequest
+import br.com.qagile.qorder.api.model.response.PlacedOrderResponse
+import br.com.qagile.qorder.api.repository.IOrderRepository
+import br.com.qagile.qorder.api.service.IOrderService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service

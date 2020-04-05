@@ -1,20 +1,20 @@
 package br.com.qagile.qorder.api.controller
 
-import br.com.qagile.qorder.core.health.QorderApplication
-import br.com.qagile.qorder.core.health.api.model.request.MenuItemRequest
-import br.com.qagile.qorder.core.health.api.model.request.PlaceOrderRequest
 import br.com.qagile.qorder.api.router.OrderRouter
+import br.com.qagile.qorder.QorderApplication
+import br.com.qagile.qorder.api.model.request.MenuItemRequest
+import br.com.qagile.qorder.api.model.request.PlaceOrderRequest
+import br.com.qagile.qorder.api.service.impl.OrderService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.context.ContextConfiguration
-
 import org.springframework.test.context.junit.jupiter.SpringExtension
-
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
@@ -22,8 +22,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(OrderController::class)
-@ContextConfiguration(classes = [QorderApplication::class])
-@SpringBootTest
 class OrderControllerTest {
 
 	@Autowired
@@ -31,6 +29,9 @@ class OrderControllerTest {
 
 	@Autowired
 	lateinit var objectMapper: ObjectMapper
+
+	@MockBean
+	lateinit var orderService: OrderService
 
 	private val userToken = "rodrigo.ornellas"
 	private val safetyHash = "1220c26144f86a3f4de116656a04f472"
@@ -50,7 +51,7 @@ class OrderControllerTest {
 					.content(objectMapper.writeValueAsString(por))
 					.contentType(MediaType.APPLICATION_JSON)
 				)
-				.andExpect(MockMvcResultMatchers.status().isOk)
+				.andExpect(MockMvcResultMatchers.status().isCreated)
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.com.qagile.qorder.core.health
+package br.com.qagile.qorder
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
