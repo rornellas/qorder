@@ -44,10 +44,12 @@ class OrderControllerTest {
 	@Test
 	@Throws(Exception::class)
 	fun test_order_creation_success() {
-		val por = PlaceOrderRequest(userToken, safetyHash, productList)
+		val por = PlaceOrderRequest(productList)
 
 		this.mvc.perform(
 					MockMvcRequestBuilders.post(OrderRouter.PLACE_ORDER)
+					.header("user_token", userToken)
+					.header("safety_hash", safetyHash)
 					.content(objectMapper.writeValueAsString(por))
 					.contentType(MediaType.APPLICATION_JSON)
 				)

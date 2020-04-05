@@ -20,8 +20,8 @@ class OrderService(val orderRepository: IOrderRepository): IOrderService {
         return orderRepository.save(order)
     }
 
-    override fun placeOrder(createOrder: PlaceOrderRequest): Mono<PlacedOrderResponse> {
-        return fromCallable{ createOrder(createOrder.convertToOrder()) }
+    override fun placeOrder(createOrder: PlaceOrderRequest, userToken: String, safetyHash: String): Mono<PlacedOrderResponse> {
+        return fromCallable{ createOrder(createOrder.convertToOrder(userToken = userToken, safetyHash = safetyHash)) }
                 .publishOn(Schedulers.elastic())
                 .flatMap{ data: Order -> Mono.justOrEmpty(PlacedOrderResponse(data)) }
                 .doOnError{ e: Throwable? -> log.error(e?.message, e) }

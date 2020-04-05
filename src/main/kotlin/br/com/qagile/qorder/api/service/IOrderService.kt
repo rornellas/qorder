@@ -6,6 +6,6 @@ import reactor.core.publisher.Mono
 
 interface IOrderService {
 
-    fun placeOrder(createOrder: PlaceOrderRequest): Mono<PlacedOrderResponse>
+    fun placeOrder(createOrder: PlaceOrderRequest, userToken: String, safetyHash: String): Mono<PlacedOrderResponse>
 
 }
