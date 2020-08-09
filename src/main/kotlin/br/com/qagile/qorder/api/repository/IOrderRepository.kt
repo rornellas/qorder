@@ -1,8 +1,8 @@
 package br.com.qagile.qorder.api.repository
 
 import br.com.qagile.qorder.api.document.Order
-import org.springframework.data.mongodb.repository.MongoRepository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-interface IOrderRepository: MongoRepository<Order, String> {
+interface IOrderRepository: ReactiveCrudRepository<Order, String> {
 
 }
